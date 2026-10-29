@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Najeema's portfolio
 
-## Getting Started
+A single-page Next.js portfolio with a private project manager.
 
-First, run the development server:
+## Backend configuration
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Copy `.env.example` to `.env.local` and fill in the values from your own services. Never commit `.env.local` or paste the secrets into public code.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **MongoDB Atlas:** Set `MONGODB_URI` and `MONGODB_DB`. In Atlas, create a database user and allow the IP addresses that need to connect.
+- **Cloudinary:** Set the cloud name, API key, and API secret. Project images are uploaded on the server to `najeema-portfolio/projects`; the public project record stores the secure image URL and Cloudinary ID.
+- **Admin login:** Set a private email and strong password. `SESSION_SECRET` must be a unique random string of at least 32 characters. The session is an HTTP-only cookie.
+- **Gmail/Nodemailer:** Set `GMAIL_USER` to the Gmail account used to send mail and `GMAIL_APP_PASSWORD` to its app password. Enable Google 2-Step Verification to create an app password. `ADMIN_EMAIL` receives contact messages and meeting summaries; the visitor receives the meeting confirmation.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+After changing `.env.local`, restart the Next.js development server. Run `npm run dev` to start the app. Open `/admin` to sign in and manage projects.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Backend routes
 
-## Learn More
+- `GET /api/projects` lists published projects for the public page.
+- `POST /api/projects` creates a project (admin session required).
+- `PUT /api/projects/:id` updates a project (admin session required).
+- `DELETE /api/projects/:id` deletes a project and its Cloudinary image (admin session required).
+- `POST /api/admin/login`, `POST /api/admin/logout`, and `GET /api/admin/session` manage the admin session.
+- `POST /api/admin/upload` uploads a project image to Cloudinary (admin session required).
+- `POST /api/contact` sends the contact form to the admin email.
+- `POST /api/bookings` validates a future date and sends both requested booking emails.
 
-To learn more about Next.js, take a look at the following resources:
+The app cannot connect to Atlas, Cloudinary, or Gmail until their credentials are entered in `.env.local`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,0 +1,34 @@
+.page { min-height: 100vh; padding: 48px max(6%, calc((100% - 1000px) / 2)); background: #f6f8fc; color: #172a3a; font-family: Arial, Helvetica, sans-serif; }
+.page *, .page *::before, .page *::after { box-sizing: border-box; }
+.page h1, .page h2, .page h3, .page p { margin-top: 0; }
+.loginCard { width: min(440px, 100%); margin: 8vh auto; padding: 32px; border: 1px solid #dce4ee; background: #fff; box-shadow: 0 16px 45px rgb(23 42 58 / 8%); }
+.backLink { color: #65758b; font-size: 12px; text-decoration: none; }
+.kicker { margin: 30px 0 10px; color: #168aad; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; }
+.loginCard h1, .dashboardHeader h1 { margin-bottom: 8px; font-size: clamp(32px, 5vw, 48px); letter-spacing: -2px; }
+.subheading, .hint, .loading { color: #65758b; font-size: 13px; line-height: 1.6; }
+.loginCard label, .editor label { display: grid; gap: 8px; margin: 18px 0; font-size: 12px; font-weight: 600; }
+.loginCard input, .editor input:not([type="file"]), .editor textarea { width: 100%; padding: 12px; border: 1px solid #dce4ee; border-radius: 3px; background: #fff; color: #172a3a; font: inherit; font-size: 14px; }
+.editor input[type="file"] { padding: 12px; border: 1px dashed #9aabba; background: #fff; font: inherit; }
+.loginCard input:focus, .editor input:focus, .editor textarea:focus { border-color: #168aad; outline: 3px solid rgb(85 194 218 / 20%); }
+.loginCard button, .formActions button { min-height: 42px; padding: 11px 16px; border: 0; border-radius: 3px; background: #172a3a; color: #fff; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.loginCard button:disabled, .formActions button:disabled { opacity: .6; cursor: wait; }
+.notice { margin: 14px 0 0; color: #176b80; font-size: 12px; line-height: 1.6; }
+.dashboardHeader { display: flex; justify-content: space-between; align-items: end; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid #dce4ee; }
+.dashboardHeader .kicker { margin-top: 0; }
+.headerActions, .formActions, .cardActions { display: flex; align-items: center; gap: 10px; }
+.headerActions a { color: #176b80; font-size: 12px; font-weight: 700; text-decoration: none; }
+.secondaryButton, .deleteButton { min-height: 36px; padding: 8px 11px; border: 1px solid #cbd7e1; border-radius: 3px; background: #fff; color: #172a3a; font: inherit; font-size: 11px; cursor: pointer; }
+.deleteButton { border-color: #edc5c3; color: #a33832; }
+.editor { max-width: 640px; margin: 28px 0 42px; padding: 26px; border: 1px solid #dce4ee; background: #fff; }
+.editor h2, .projectList h2 { margin-bottom: 20px; font-size: 20px; }
+.editor textarea { resize: vertical; }
+.formActions { margin-top: 16px; }
+.projectList h2 span { margin-left: 8px; color: #65758b; font-size: 13px; }
+.cards { display: grid; gap: 12px; }
+.card { display: grid; grid-template-columns: 120px 1fr; gap: 18px; padding: 14px; border: 1px solid #dce4ee; background: #fff; }
+.thumbnail { position: relative; min-height: 100px; overflow: hidden; background: #e6edf3; }
+.thumbnail img { object-fit: cover; }
+.cardText h3 { margin-bottom: 6px; font-size: 15px; }
+.cardText p { margin-bottom: 12px; color: #65758b; font-size: 12px; line-height: 1.5; }
+.cardActions { justify-content: flex-start; }
+@media (max-width: 600px) { .page { padding: 26px 5%; } .loginCard { margin-top: 4vh; padding: 24px; } .dashboardHeader { align-items: flex-start; flex-direction: column; } .card { grid-template-columns: 88px 1fr; gap: 12px; } .thumbnail { min-height: 90px; } .editor { padding: 20px; } }
